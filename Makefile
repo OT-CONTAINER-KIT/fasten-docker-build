@@ -36,3 +36,13 @@ solution3-build-package-with-time:
 run-app:
 	docker rm -f app || true
 	docker run -p 8080:8080 -d --rm --name app opstree/fasten-build
+
+run-report:
+	echo "Problem build"
+	make problem-build-package-with-time
+	echo "Solution 1 build"
+	make solution1-build-package-with-time
+	echo "Solution 2 build"
+	make solution2-build-package-with-time
+	echo "Solution 3 build"
+	make solution3-build-package-with-time
