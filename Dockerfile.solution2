@@ -1,0 +1,14 @@
+FROM maven:3-jdk-8
+
+LABEL maintainer="opensource@opstree.com"
+
+WORKDIR /usr/src/app
+
+ADD pom.xml /usr/src/app
+RUN mvn dependency:resolve -Dmaven.test.skip=true
+#RUN mvn clean package -Dmaven.test.skip=true
+
+ADD . /usr/src/app
+RUN mvn clean install -Dmaven.test.skip=true
+
+ENTRYPOINT ["java","-jar","/usr/src/app/target/helloworld-0.0.3-SNAPSHOT.jar"]

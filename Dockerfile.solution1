@@ -4,6 +4,6 @@ LABEL maintainer="opensource@opstree.com"
 
 WORKDIR /usr/src/app
 
-ADD target/helloworld-0.0.1-SNAPSHOT.jar /usr/src/app/app.jar
+ADD target/helloworld-0.0.3-SNAPSHOT.jar /usr/src/app/app.jar
 
 ENTRYPOINT ["java","-jar","/usr/src/app/app.jar"]

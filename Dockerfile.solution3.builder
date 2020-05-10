@@ -6,5 +6,3 @@ WORKDIR /usr/src/app
 
 ADD . /usr/src/app
 RUN mvn clean package -Dmaven.test.skip=true
-
-ENTRYPOINT ["java","-jar","/usr/src/app/target/helloworld-0.0.1-SNAPSHOT.jar"]
