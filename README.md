@@ -33,3 +33,30 @@ real	0m15.212s
 user	0m0.288s
 sys	0m0.286s
 ```
+
+## Solution2
+Leverage layering capability of Docker, created separate layer for dependencies download
+[Solution1 Docker file](./Dockerfile.solution2)
+You can run make target to validate the image creation part
+```
+$ make solution2-build-package-with-time
+time make solution2-build-package >/dev/null 2>&1
+
+real	1m32.215s
+user	0m0.788s
+sys	0m0.787s
+```
+
+## Solution3
+Used interesting concept of intermediate builder image so that only delta dependencies will be downloaded
+[Solution3 builder Docker file](./Dockerfile.solution3.builder)
+[Solution3 Docker file](./Dockerfile.solution3)
+You can run make target to validate the image creation part
+```
+$ make solution3-build-package-with-time
+time make solution3-build-package >/dev/null 2>&1
+
+real	0m4.800s
+user	0m0.224s
+sys	0m0.200s
+```
