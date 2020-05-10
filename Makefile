@@ -9,7 +9,7 @@ solution1-build:
 	docker run -it -v ~/.m2/repository:/root/.m2/repository -w /usr/src/mymaven -v ${PWD}:/usr/src/mymaven --rm maven:3-jdk-8 mvn clean package -Dmaven.test.skip=true
 
 solution1-package:
-	docker build -t opstree/fasten-build -f Dockerfile.solution1
+	docker build -t opstree/fasten-build -f Dockerfile.solution1 .
 
 solution1-build-package:
 	make solution1-build
