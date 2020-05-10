@@ -5,7 +5,8 @@ LABEL maintainer="opensource@opstree.com"
 WORKDIR /usr/src/app
 
 ADD pom.xml /usr/src/app
-RUN mvn dependency:resolve
+RUN mvn dependency:resolve -Dmaven.test.skip=true
+#RUN mvn clean package -Dmaven.test.skip=true
 
 ADD . /usr/src/app
 RUN mvn clean install -Dmaven.test.skip=true

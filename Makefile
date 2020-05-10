@@ -6,10 +6,10 @@ problem-build-package-with-time:
 	time make problem-build-package >/dev/null 2>&1
 
 solution1-build:
-	docker run -it -v ~/.m2/repository:/root/.m2/repository -w /usr/src/mymaven -v ${PWD}:/usr/src/mymaven --rm maven:3-jdk-8 mvn clean package -Dmaven.test.skip=true >/dev/null 2>&1
+	docker run -it -v ~/.m2/repository:/root/.m2/repository -w /usr/src/mymaven -v ${PWD}:/usr/src/mymaven --rm maven:3-jdk-8 mvn clean package -Dmaven.test.skip=true
 
 solution1-package:
-	docker build -t opstree/fasten-build -f Dockerfile.solution1 . >/dev/null 2>&1
+	docker build -t opstree/fasten-build -f Dockerfile.solution1
 
 solution1-build-package:
 	make solution1-build
@@ -23,6 +23,15 @@ solution2-build-package:
 
 solution2-build-package-with-time:
 	time make solution2-build-package >/dev/null 2>&1
+
+solution3-build-builder:
+	docker build -t opstree/fasten-build-builder -f Dockerfile.solution3.builder .
+
+solution3-build-package:
+	docker build -t opstree/fasten-build -f Dockerfile.solution3 .
+
+solution3-build-package-with-time:
+	time make solution3-build-package >/dev/null 2>&1
 
 run-app:
 	docker rm -f app || true

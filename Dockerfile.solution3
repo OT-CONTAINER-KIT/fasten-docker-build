@@ -1,0 +1,7 @@
+FROM opstree/fasten-build-builder
+
+ADD . /usr/src/app
+
+RUN mvn clean package -Dmaven.test.skip=true
+
+ENTRYPOINT ["java","-jar","/usr/src/app/target/helloworld-0.0.3-SNAPSHOT.jar"]
